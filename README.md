@@ -77,3 +77,7 @@ Add these system properties:
 ```
 
 The last 4 are the interesting ones! These tell the agent which headers to capture
+
+## Results
+
+<img width="943" alt="image" src="https://user-images.githubusercontent.com/75337021/207979286-d9285759-671f-400c-91b5-a73ec7aae369.png">
