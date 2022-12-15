@@ -13,7 +13,7 @@ The main application is `HttpHeaderAttributesMain`. This application spins up a 
 HTTP server on port 8182, and a client that sends a request to the server once a second.
 
 This is an unusual ab/use of HTTP and is only intended to demonstrate how to tell
-the java instrumentation to copy headers into an attributes.
+the java instrumentation to copy headers into attributes.
 
 ### Client request
 
