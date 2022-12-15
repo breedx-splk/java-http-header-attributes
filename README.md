@@ -6,7 +6,7 @@ do this by default, primarily because it risks leaking sensitive data.
 Fortunately, there is a way to instruct the java agent to collect http 
 headers and attach them to your spans. 
 
-This project is quick demonstrative example of capturing http headers as 
+This project is a quick demonstrative example of capturing http headers as 
 span attributes.
 
 The main application is `HttpHeaderAttributesMain`. This application spins up a small
