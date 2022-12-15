@@ -2,7 +2,7 @@
 
 We often get asked how to copy http request/response headers into 
 OpenTelemetry span attributes. The java instrumentation agent does not 
-do this by default, primarily because of the potential to leak sensitive data.
+do this by default, primarily because it risks leaking sensitive data.
 Fortunately, there is a way to instruct the java agent to collect http headers. 
 
 This project is quick demonstrative example of capturing http headers as 
@@ -57,6 +57,9 @@ You must have java 11+ installed.
 ```
 
 ## Configuration
+
+Configuration is provided to the java agent via system properties passed
+on the commandline. 
 
 If you look in the [`build.gradle.kts`](build.gradle.kts) file, you will 
 notice several JVM commandline args. These are used to wire up the java agent,
