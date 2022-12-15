@@ -76,12 +76,26 @@ Add these system properties:
 -Dotel.instrumentation.http.capture-headers.server.response=originator
 ```
 
-The last 4 are the interesting ones! These tell the agent which headers to capture
+The last 4 are the interesting ones! These tell the agent which headers to capture. 
+Specifically, we are asking the java agent to capture these 4 headers:
+
+* client instrumentation - outgoing request - `demeanor`
+* client instrumentation - incoming response - `originator`
+* server instrumentation - incoming request `demeanor` and `user-agent`
+* server instrumentation - outgoign response - `originator`
+
+If your application is purely a client or purely a server, you would probably only need
+one half of this, but we've provided both directions on both sides as a demonstration.
 
 ## Results
 
+In the APM trace view, we have generated a simple trace with one client span and one server span:
+
 <img width="943" alt="image" src="https://user-images.githubusercontent.com/75337021/207979286-d9285759-671f-400c-91b5-a73ec7aae369.png">
 
-and expanding the client request span:
+If we expand the topmost client span and expanding the client request span:
 
 <img width="600" alt="client-span" src="https://user-images.githubusercontent.com/75337021/207980022-6d085818-795b-4d65-93b6-7faa5c83a0a3.png">
+
+And then expand the server span:
+<img width="600" alt="server-span" src="https://user-images.githubusercontent.com/75337021/207980829-33a1a514-288b-4f7b-bc97-4fd0dbf67d8d.png">
