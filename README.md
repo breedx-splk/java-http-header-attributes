@@ -61,6 +61,8 @@ You must have java 11+ installed.
 Configuration is provided to the java agent via system properties passed
 on the commandline. No manual code changes required!
 
+[The upstream community documentation for this feature is here](https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/#capturing-http-request-and-response-headers).
+
 If you look in the [`build.gradle.kts`](build.gradle.kts) file, you will 
 notice several JVM commandline args. These are used to wire up the java agent,
 and to tell it to 
@@ -93,9 +95,28 @@ In the APM trace view, we have generated a simple trace with one client span and
 
 <img width="943" alt="image" src="https://user-images.githubusercontent.com/75337021/207979286-d9285759-671f-400c-91b5-a73ec7aae369.png">
 
-If we expand the topmost client span and expanding the client request span:
+If we expand the topmost client span, we can view the relevant attributes:
 
 <img width="600" alt="client-span" src="https://user-images.githubusercontent.com/75337021/207980022-6d085818-795b-4d65-93b6-7faa5c83a0a3.png">
 
-And then expand the server span:
+We see that the span contains two new attributes that would not have been there otherwise: `http.request.header.demeanor
+` and `http.response.header.originator`.
+
+If we now expand the server span, we can see the new attributes there as well:
+
 <img width="600" alt="server-span" src="https://user-images.githubusercontent.com/75337021/207980829-33a1a514-288b-4f7b-bc97-4fd0dbf67d8d.png">
+
+The three additional attributes are `http.request.header.demeanor`, `http.request.header.user_agent`, and `http.response.header.originator`.
+
+## Mappings
+
+HTTP headers that are turned into attributes are prefixed with one of:
+* `http.request.header.`
+* `http.response.header.`
+
+In addition to the prefix being added header names will have hyphens converted to underscores (see `User-Agent` becoming `user_agent` in the above example).
+
+Furthermore, because [HTTP headers may be repeated](https://www.rfc-editor.org/rfc/rfc9110.html#section-5.2), the values
+need to be treated as a list. As a result, the attribute value is surrounded with square brackets and the values 
+are concatenated with commas.
+
