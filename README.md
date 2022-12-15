@@ -59,7 +59,7 @@ You must have java 11+ installed.
 ## Configuration
 
 Configuration is provided to the java agent via system properties passed
-on the commandline. 
+on the commandline. No manual code changes required!
 
 If you look in the [`build.gradle.kts`](build.gradle.kts) file, you will 
 notice several JVM commandline args. These are used to wire up the java agent,
@@ -84,4 +84,4 @@ The last 4 are the interesting ones! These tell the agent which headers to captu
 
 and expanding the client request span:
 
-![image](https://user-images.githubusercontent.com/75337021/207980022-6d085818-795b-4d65-93b6-7faa5c83a0a3.png)
+<img width="600" alt="client-span" src="https://user-images.githubusercontent.com/75337021/207980022-6d085818-795b-4d65-93b6-7faa5c83a0a3.png">
