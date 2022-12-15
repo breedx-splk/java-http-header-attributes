@@ -85,7 +85,7 @@ Specifically, we are asking the java agent to capture these 4 headers:
 * client instrumentation - outgoing request - `demeanor`
 * client instrumentation - incoming response - `originator`
 * server instrumentation - incoming request `demeanor` and `user-agent`
-* server instrumentation - outgoign response - `originator`
+* server instrumentation - outgoing response - `originator`
 
 If your application is purely a client or purely a server, you would probably only need
 half of this, but we've provided both directions on both sides for demonstration.
